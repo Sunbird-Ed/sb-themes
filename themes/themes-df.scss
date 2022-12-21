@@ -7,33 +7,8 @@ html[layout="joy"] {
   --df-common-bg: var(--df-e9e8d9);
 }
 
-// Green Theme
-html[data-theme="Green"] {
-  --primary-hs: 148, 100%; // template primary color // #008a40
-  --primary: hsl(var(--primary-hs), 27%);
-  --df-common-bg: var(--primary-100);
-  --df-body-bg: var(--primary-0); // body bg
-
-  img {
-    filter: unset;
-  }
-}
-
-// Orange Theme
-html[data-theme="Orange"] {
-  --primary-hs: 32, 91%; // template primary color // #e57f0b
-  --primary: hsl(var(--primary-hs), 47%);
-  --df-common-bg: var(--primary-100);
-  --df-body-bg: var(--primary-0); // body bg
-
-  .category-card .category-card-main .eye-icon,
-  .bookmark-icon {
-    filter: invert(1);
-  }
-}
-
 // Dark Mode
-html[data-theme="Darkmode"],
+html[data-mode="darkmode"],
 html[data-theme="JOYFUL"][data-mode="DARKMODE"] {
   // Dark Theme color variation
   --primary-hs: 49, 100%; // template primary color // #ffd829
