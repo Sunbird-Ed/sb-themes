@@ -24,7 +24,7 @@ jobs:
           command: |-
               if [ -z $CIRCLE_PR_NUMBER ]; then
                echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-               npm publish --tag 7.0.1-patch-1
+               npm publish --tag 7.0.1-patch.1
               fi
           name: "Publish to NPM"
 version: 2.1
