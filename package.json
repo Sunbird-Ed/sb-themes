@@ -1,6 +1,6 @@
 {
   "name": "@project-sunbird/sb-themes",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "Sunbird project application themes",
   "main": "index.js",
   "scripts": {
