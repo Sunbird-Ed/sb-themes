@@ -44,12 +44,12 @@ html[data-theme="JOYFUL"][data-mode="DARKMODE"] {
   --df-222: #222;
   --text-color: var(--white);
   --df-background: var(--df-222);
-  --df-common-bg: var(--df-333);
+  --df-common-bg: var(--df-222);
 
   //declared variables
   --df-body-bg: var(--black); // body bg
-  --df-card-bg: var(--black);
-  --df-related-card-bg: var(--black);
+  --df-card-bg: var(--df-333);
+  --df-related-card-bg: var(--df-333);
   --df-sidebar-menu-text: var(--gray-300);
   --df-sidebar-menu-active-bg: var(--df-333);
   --df-tab-text: var(--text-color);

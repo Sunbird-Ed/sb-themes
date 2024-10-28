@@ -1,40 +1,24 @@
-@use 'sass:math'; 
+@use "~@project-sunbird/sb-styles/assets/mixins/mixins" as *;
 
-@function calculateRem($size) {
-    $remSize: math.div($size, 16px); // Use math.div() for division
-    @return #{$remSize}rem;
-}
-
-
-html[data-theme='Default'] {
+html[data-theme='default'] {
 
     // Material Tabs
     --mat-tab-labels-bg: var(--white);
 
-    // Material Tooltip
-    --mat-tooltip-text: var(--gray-800);
-
     // Material Accordion
     --mat-accordion-expansion-panel-bg: var(--white);
-    --mat-accordion-expansion-panel-header-bg: var(--white);
     --mat-accordion-expansion-panel-body-bg: var(--primary-0);
-
-    // accordion
-    --sb-mat-accordion-bg: var(--white);
 
     // Tab Group inside Accordion variables
     --mat-accordion-tab-label-bg: var(--white);
-    --mat-accordion-tab-body-active-bg: var(--white);
-    --mat-accordion-tabs-label-active-after-bg: var(--white);
 
     // Datepicker
     --mat-datepicker-form-bg: var(--white);
-    --mat-datepicker-calender-bg: var(--white);
     --mat-datepicker-calender-body-selected-txt: var(--white);
 
     // Material Modals(Dialog)
     --mat-modal-title-bg: var(--primary-color);
-    --mat-modal-content-bg: var(--white);
+    --mat-modal-title-txt: var(--white);
 
     // Material Select
     --mat-dropdown-form-bg: var(--white);
@@ -49,26 +33,12 @@ html[data-theme='Default'] {
 
 }
 
-html[data-theme='Default'][layout='joy'] {
-
-    --sbfaq-compt-bg: #e9e8d9;
-
-    // accordion
-    --sb-mat-accordion-bg: var(--sbfaq-compt-bg);
-}
-
 html[layout='joy'] {
 
-    --mat-tab-labels-bg: var(--sbt-body-bg2);
-    --mat-accordion-tab-body-active-bg: var(--sbt-body-bg);
     --mat-accordion-tab-label-bg: var(--sbt-body-bg);
-
-    // Material Accordion
-    --mat-accordion-tabs-label-active-after-bg: var(--sbt-body-bg);
 
     // accordion
     --sb-mat-accordion-bradius: 1.5rem;
-    --sb-mat-accordion-bg: var(--sbt-body-bg);
 
     .mat-tab__usage-report {
         .mat-tab-header {
@@ -124,29 +94,25 @@ html[layout='joy'] {
     }
 }
 
-html[data-theme='Darkmode'] {
+html[data-theme='default'][data-mode='darkmode'] {
 
     --gray-222: #222;
 
     // accordion
-    --sb-mat-accordion-bg: var(--sbt-body-bg);
 
     // Tab Group inside Accordion variables
     --mat-accordion-tab-label-bg: var(--gray-222);
-    --mat-accordion-tab-body-active-bg: var(--gray-222);
-    --mat-accordion-tabs-label-active-after-bg: var(--gray-222);
 
     // Datepicker
     --mat-datepicker-form-bg: var(--gray-222);
-    --mat-datepicker-calender-bg: var(--gray-222);
     --mat-datepicker-calender-body-selected-txt: var(--gray);
-
-    // Material Modals(Dialog)
-    --mat-modal-title-txt: var(--white);
-    --mat-modal-content-txt: var(--white);
 
     // Material Dropdown
     --mat-dropdown-form-bg: var(--gray-222);
+    --mat-modal-title-bg: var(--primary-color);
+
+    --mat-modal-title-txt: var(--color-000);
+
 
     // Material Tabs
     .mat-tab__usage-report,
@@ -161,28 +127,21 @@ html[data-theme='Darkmode'] {
     }
 }
 
+html[data-theme='default'][layout='joy'] {
+    --mat-modal-title-bg: var(--sbt-compt-bg);
+    --mat-modal-title-txt: var(--gray-800);
+}
+
 html[layout='joy'],
-html[data-theme='Darkmode'] {
+html[data-theme='default'][data-mode='darkmode'] {
 
     // Material Tabs
     --mat-tab-labels-bg: var(--sbt-body-bg2);
 
     // Material Accordion
     --mat-accordion-expansion-panel-bg: var(--sbt-compt-bg);
-    --mat-accordion-expansion-panel-header-bg: var(--sbt-compt-bg);
     --mat-accordion-expansion-panel-body-bg: var(--sbt-compt-bg);
 
-    // Material Modals(Dialog)
-    --mat-modal-title-bg: var(--sbt-compt-bg);
-    --mat-modal-content-bg: var(--sbt-compt-bg);
-}
-
-html[data-theme='Default'],
-html[layout='joy'] {
-
-    // Material Modals(Dialog)
-    --mat-modal-title-txt: var(--sb-modal-header-text);
-    --mat-modal-content-txt: var(--gray-800);
 }
 
 /* Material Tab starts here */
@@ -220,7 +179,7 @@ mat-tab-group.sb-mat__tab {
 
         .mat-tab-body {
             &.mat-tab-body-active {
-                background: var(--mat-accordion-tab-body-active-bg);
+                background: var(--mat-accordion-tab-label-bg);
                 border: 1px solid var(--gray-100);
                 border-top: none;
                 padding: calculateRem(16px);
@@ -262,7 +221,7 @@ mat-tab-group.sb-mat__tab {
 
                 &::after {
                     height: calculateRem(2px);
-                    background: var(--mat-accordion-tabs-label-active-after-bg);
+                    background: var(--mat-accordion-tab-label-bg);
                 }
             }
         }
@@ -323,7 +282,7 @@ mat-tooltip-component .mat-tooltip {
     padding: calculateRem(8px) calculateRem(14px);
     font-size: calculateRem(12px);
     margin: calculateRem(6px);
-    background: var(--mat-tooltip-text);
+    background: var(--gray-800);
 }
 
 // Accordion
@@ -347,7 +306,7 @@ mat-tooltip-component .mat-tooltip {
             height: calculateRem(56px) !important;
             font-size: calculateRem(16px);
             font-weight: bold;
-            background: var(--mat-accordion-expansion-panel-header-bg) !important;
+            background: var(--mat-accordion-expansion-panel-bg) !important;
 
             .mat-expansion-panel-header-title {
                 color: var(--primary-color);
@@ -373,7 +332,7 @@ mat-tooltip-component .mat-tooltip {
     display: block;
 
     .mat-expansion-panel {
-        background: var(--sb-mat-accordion-bg);
+        background: var(--mat-accordion-expansion-panel-bg);
         border-radius: var(--sb-mat-accordion-bradius) !important;
 
         .mat-expansion-panel-header {
@@ -471,7 +430,7 @@ mat-tooltip-component .mat-tooltip {
 }
 
 .mat-datepicker-content .mat-calendar {
-    background-color: var(--mat-datepicker-calender-bg);
+    background-color: var(--mat-datepicker-form-bg);
     color: var(--gray-800);
     border: 1px solid var(--gray-200);
     border-radius: calculateRem(4px);
@@ -567,8 +526,8 @@ mat-tooltip-component .mat-tooltip {
             padding: calculateRem(16px);
             max-height: 400px;
             min-height: 100px;
-            background: var(--mat-modal-content-bg);
-            color: var(--mat-modal-content-txt);
+            background: var(--mat-accordion-expansion-panel-bg);
+            color: var(--gray-800);
             overflow-y: auto;
         }
 
@@ -576,7 +535,7 @@ mat-tooltip-component .mat-tooltip {
             display: flex;
             padding: 8px 16px;
             align-items: center;
-            background-color: var(--mat-modal-content-bg);
+            background-color: var(--mat-accordion-expansion-panel-bg);
             border-top: 0.5px solid var(--gray-100);
             justify-content: flex-end;
             border-bottom-left-radius: calculateRem(4px);

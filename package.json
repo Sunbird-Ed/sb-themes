@@ -1,6 +1,6 @@
 {
   "name": "@project-sunbird/sb-themes",
-  "version": "0.0.84",
+  "version": "7.0.2",
   "description": "Sunbird project application themes",
   "main": "index.js",
   "scripts": {
@@ -45,6 +45,7 @@
     "stylelint-config-standard": "^36.0.1"
   },
   "dependencies": {
+    "@project-sunbird/sb-styles": "0.0.14",
     "stylelint": "^16.10.0"
-  }
+}
 }
