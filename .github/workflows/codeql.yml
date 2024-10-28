@@ -1,32 +1,59 @@
 name: Code QL
-
 on:
   push:
     branches:
-      - main
       - github-actions
-    tags:
-      - "*"
 
 jobs:
-  build_app:
+  build_css:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install Dependencies
-        run: npm install
-      - name: Build App
-        run: npm run build
-      - name: lint check
-        run: npx stylelint "**/*.scss"
 
-  publish_npm:
-    if: startsWith(github.ref, 'refs/tags/')
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Publish to NPM
+      - name: Checkout source Git branch
+        uses: actions/checkout@v2
+        with:
+            ref: src-pages
+            fetch-depth: 10
+            submodules: true
+
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp /tmp/sb-themes/assets/css
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.6.0
+        with:
+          source: _scss/main.scss
+          destination: /tmp/sb-themes/assets/css/main.css
+
+      - name: Checkout destination Git branch
+        uses: actions/checkout@v2
+        with:
+            ref: pr-pages
+            fetch-depth: 1
+
+      - name: Move compiled CSS to path within pr-pages branch
+        run: mv /tmp/sb-themes/assets/css assets/
+
+      - name: Add and Commit changes to pr-pages branch
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          npm publish
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git add assets/css/*
+          git commit -m 'Updates compiled CSS files'
 
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: pr-pages
+
+      - name: Initialize Pull Request
+        uses: gha-utilities/init-pull-request@v0.0.4
+        with:
+          pull_request_token: ${{ secrets.GITHUB_TOKEN }}
+          head: pr-pages
+          base: gh-pages
+          title: 'Updates site files from latest Actions build'
+          body: >
+            Perhaps a multi-line description
+            about latest features and such.
