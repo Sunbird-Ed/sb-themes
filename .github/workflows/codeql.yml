@@ -22,6 +22,9 @@ jobs:
       - name: List SCSS files in themes
         run: ls -R themes
 
+      - name: Install Sass
+        run: npm install -g sass
+
       - name: Compile CSS from SCSS files
         run: |
           # Find all SCSS files and compile them into one CSS file
