@@ -12,9 +12,9 @@ jobs:
       - name: Checkout source Git branch
         uses: actions/checkout@v2
         with:
-            ref: github-actions
-            fetch-depth: 10
-            submodules: true
+          ref: github-actions
+          fetch-depth: 10
+          submodules: true
 
       - name: Make destination directory for compiled CSS
         run: mkdir -vp /tmp/sb-themes/assets/css
@@ -23,16 +23,15 @@ jobs:
         run: ls -R themes
 
       - name: Compile CSS from SCSS files
-        uses: gha-utilities/sass-build@v0.6.0
-        with:
-          source: themes/
-          destination: /tmp/sb-themes/assets/css/main.css
+        run: |
+          # Find all SCSS files and compile them into one CSS file
+          sass --no-source-map $(find themes -name '*.scss') /tmp/sb-themes/assets/css/main.css
 
       - name: Checkout destination Git branch
         uses: actions/checkout@v2
         with:
-            ref: pr-pages
-            fetch-depth: 1
+          ref: pr-pages
+          fetch-depth: 1
 
       - name: Move compiled CSS to path within pr-pages branch
         run: mv /tmp/sb-themes/assets/css assets/
