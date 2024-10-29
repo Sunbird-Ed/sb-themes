@@ -19,6 +19,9 @@ jobs:
       - name: Make destination directory for compiled CSS
         run: mkdir -vp /tmp/sb-themes/assets/css
 
+      - name: List SCSS files in themes
+        run: ls -R themes
+
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.6.0
         with:
