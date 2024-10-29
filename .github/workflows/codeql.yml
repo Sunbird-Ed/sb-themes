@@ -20,8 +20,6 @@ jobs:
       - name: Make destination directory for compiled CSS
         run: mkdir -vp /tmp/sb-themes/assets/css
 
-      - name: List SCSS files in themes
-        run: ls -R themes
 
       - name: Install Sass
         run: npm install -g sass
