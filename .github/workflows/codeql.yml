@@ -27,8 +27,7 @@ jobs:
 
       - name: Compile CSS from SCSS files
         run: |
-          # Find all SCSS files and compile them into one CSS file
-          sass --no-source-map $(find themes -name '*.scss') /tmp/sb-themes/assets/css/main.css
+          sass --no-source-map themes:assets/css/main.css
 
       - name: Checkout destination Git branch
         uses: actions/checkout@v2
