@@ -27,7 +27,7 @@ jobs:
 
       - name: Compile CSS from SCSS files
         run: |
-          sass --no-source-map themes:assets/css/main.css
+          # sass --no-source-map themes:assets/css/main.css
 
       - name: Checkout destination Git branch
         uses: actions/checkout@v2
