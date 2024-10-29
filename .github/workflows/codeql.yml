@@ -29,16 +29,25 @@ jobs:
         run: |
           # sass --no-source-map themes:assets/css/main.css
 
-      - name: Create temporary branch
+      # - name: Create temporary branch
+      #   run: |
+      #     git checkout -b pr-pages
+
+
+      # - name: Checkout destination Git branch
+      #   uses: actions/checkout@v2
+      #   with:
+      #     ref: pr-pages
+      #     fetch-depth: 1
+
+      - name: Create or Checkout destination Git branch
         run: |
-          git checkout -b pr-pages
-
-
-      - name: Checkout destination Git branch
-        uses: actions/checkout@v2
-        with:
-          ref: pr-pages
-          fetch-depth: 1
+          # Check if the pr-pages branch exists
+          if git show-ref --quiet refs/heads/pr-pages; then
+            git checkout pr-pages
+          else
+            git checkout -b pr-pages
+          fi
 
       - name: Move compiled CSS to path within pr-pages branch
         run: mv /tmp/sb-themes/assets/css assets/
