@@ -29,6 +29,11 @@ jobs:
         run: |
           # sass --no-source-map themes:assets/css/main.css
 
+      - name: Create temporary branch
+        run: |
+          git checkout -b temp-pr-pages
+
+
       - name: Checkout destination Git branch
         uses: actions/checkout@v2
         with:
