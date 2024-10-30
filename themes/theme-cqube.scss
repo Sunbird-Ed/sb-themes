@@ -1,5 +1,3 @@
-@use 'theme-dk.scss';
-@use 'theme-dk-reverse.scss';
 html[data-theme="light"][data-layout="cQubeDefault"]  {
   --cQ-theme-bg: #eef2fb;
   --cQ-theme-bg-shade: #dbe7ff;
@@ -12,6 +10,7 @@ html[data-theme="light"][data-layout="cQubeDefault"]  {
   --cQ-gray555: #555;
   --cQ-gray-contrast: var(--white);
   --cQcard-boxshadow: #bfd2fc;
+
   --metaDatabox-bg: #e3ecff;
 }
 html[data-layout="cQubeDefault"] {
@@ -490,3 +489,5 @@ html[data-theme="dark"][data-layout="cQubeDefault"]  {
 // }
 
 
+@import 'theme-dk.scss';
+@import 'theme-dk-reverse.scss';
