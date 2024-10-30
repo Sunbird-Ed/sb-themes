@@ -1,10 +1,12 @@
 {
   "name": "@project-sunbird/sb-themes",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Sunbird project application themes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:scss": "stylelint '**/*.scss'",
+    "build": "sass themes:themes/assets/css/main.css"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,15 @@
   "homepage": "https://github.com/Sunbird-Ed/sb-themes.git#readme",
   "author": "",
   "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.13.0",
+    "sass": "^1.80.3",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-scss": "^6.8.1"
+  },
   "dependencies": {
-    "@project-sunbird/sb-styles": "0.0.14"
+    "@project-sunbird/sb-styles": "^0.0.14",
+    "stylelint-selector-bem-pattern": "^4.0.1"
   }
 }
