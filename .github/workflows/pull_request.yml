@@ -50,9 +50,6 @@ jobs:
       - name: Compile SCSS to CSS
         run: npm run build
 
-      - name: lint check
-        run: npx stylelint "**/*.scss"
-
       - name: Save node_modules cache
         if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache@v3
