@@ -47,9 +47,6 @@ jobs:
       - name: Create dist folder
         run: mkdir -p dist
 
-      - name: Compile SCSS to CSS
-        run: npm run build
-
       - name: Save node_modules cache
         if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache@v3
