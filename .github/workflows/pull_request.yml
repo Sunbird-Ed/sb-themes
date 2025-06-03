@@ -42,4 +42,5 @@ jobs:
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: Build project and Pack (PR)
-        run: npm pack
+        run: npm pac
+        
