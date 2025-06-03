@@ -1,7 +1,9 @@
 name: Tag Build
 
 on:
-  pull_request:
+  push:
+    tags:
+      - '*'
 
 permissions:
   actions: read
@@ -42,18 +44,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Create dist folder
-        run: mkdir -p dist
-
       - name: Save node_modules cache
         if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Build project and Pack (PR)
-        run: npm pack
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
