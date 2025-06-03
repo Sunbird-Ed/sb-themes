@@ -1,9 +1,7 @@
 name: Tag Build
 
 on:
-  push:
-    tags:
-      - '*'
+  pull_request:
 
 permissions:
   actions: read
