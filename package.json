@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:scss": "stylelint '**/*.scss'",
-    "build": "sass themes:themes/assets/css/main.css"
+   "build": "sass --load-path=node_modules themes:themes/assets/css/main.css"
   },
   "repository": {
     "type": "git",
