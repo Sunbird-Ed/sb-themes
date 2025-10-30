@@ -1,4 +1,4 @@
-@use "~@project-sunbird/sb-styles/assets/mixins/mixins" as *;
+@use "@project-sunbird/sb-styles/assets/mixins/mixins" as *;
 
 html[data-color='purple'] {
     --primary-theme: #5449b6; // hsl(246, 43%, 50%);
