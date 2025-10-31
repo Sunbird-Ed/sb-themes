@@ -1,12 +1,12 @@
 {
   "name": "@project-sunbird/sb-themes",
-  "version": "7.0.3",
+  "version": "7.0.3-v16",
   "description": "Sunbird project application themes",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:scss": "stylelint '**/*.scss'",
-    "build": "sass themes:themes/assets/css/main.css"
+    "build": "sass --load-path=node_modules themes:themes/assets/css/main.css"
   },
   "repository": {
     "type": "git",
