@@ -25,15 +25,14 @@
   "homepage": "https://github.com/Sunbird-Ed/sb-themes.git#readme",
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "@project-sunbird/sb-styles": "0.0.14"
-  },
   "devDependencies": {
-    "eslint": "^9.38.0",
-    "sass": "^1.93.2",
-    "stylelint": "^16.25.0",
-    "stylelint-config-standard": "^39.0.1",
-    "stylelint-scss": "^6.12.1",
+    "eslint": "^9.13.0",
+    "sass": "^1.80.3",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-scss": "^6.8.1"
+  },
+  "dependencies": {
     "@project-sunbird/sb-styles": "^0.0.14",
     "stylelint-selector-bem-pattern": "^4.0.1"
   }
