@@ -1,0 +1,69 @@
+
+name: CodeQL
+on:
+  pull_request:
+    branches:
+      - github-actions
+
+jobs:
+  build_css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source Git branch
+        uses: actions/checkout@v2
+        with:
+          ref: github-actions
+          fetch-depth: 10
+          submodules: true
+
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp /tmp/sb-themes/assets/css
+
+
+      - name: Install Sass
+        run: npm install -g sass
+
+      - name: Compile CSS from SCSS files
+        run: |
+          # Uncomment and modify this line to compile your SCSS files
+          # sass --no-source-map themes:assets/css/main.css
+
+      - name: Create or Checkout destination Git branch
+        run: |
+          # Check if the pr-pages branch exists
+          if git show-ref --quiet refs/heads/pr-pages; then
+            git checkout pr-pages
+          else
+            git checkout -b pr-pages
+          fi
+
+      - name: Move compiled CSS to path within pr-pages branch
+        run: mv /tmp/sb-themes/assets/css assets/
+
+      - name: Add and Commit changes to pr-pages branch
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          # git add assets/css/*
+          # git commit -m 'Updates compiled CSS files'
+
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: pr-pages
+          force: true
+
+      - name: Initialize Pull Request
+        uses: gha-utilities/init-pull-request@v0.0.4
+        with:
+          pull_request_token: ${{ secrets.GITHUB_TOKEN }}
+          head: pr-pages
+          base: gh-pages
+          title: 'Updates site files from latest Actions build'
+          body: >
+            Perhaps a multi-line description
+            about latest features and such.
+            
