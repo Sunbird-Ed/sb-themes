@@ -2,7 +2,7 @@ html[data-theme="JOYFUL"] {
   .sbt-inside-page-container.ui.container {
     margin: 0 !important;
     height: 100%;
-    background: hsla(0, 0%, 7%, 0.75);
+    // background: hsla(0, 0%, 7%, 0.75);
   }
   lib-lib-entry {
     .df-header {
@@ -49,6 +49,8 @@ html[data-theme="JOYFUL"][data-mode="DARKMODE"] {
   --app-shadow: rgba(0, 0, 0, 0.1);
   --button-style-shadow: 5px 5px 2px 0 var(--app-shadow);
   --block-style-shadow: 0 2px 7px 0 var(--app-shadow);
+
+  --app-tertiary-background: #000;
 
   //cc
   --cc-accordion-panel-br: #333;
@@ -1417,14 +1419,6 @@ html[data-theme="JOYFUL"][data-mode="DARKMODE"] {
     background: var(--white);
   }
 
-  .df-btn-container,
-  .discuss-card-content,
-  .discussion-details,
-  .related-discuss-card,
-  .discussion-start-modal .discussion-start-modal-content {
-    background: #333;
-  }
-
   .df-btn-container .sb-left-icon,
   .submit-post-btn.start-common-btn {
     color: var(--black) !important;
@@ -1708,6 +1702,7 @@ html[device-accessable-theme="accessible"][data-theme="JOYFUL"] {
   --app-medium-gray: #4a4a4a;
   --app-light-gray: #555;
   $red: #ad0011;
+  $gray: #333333;
   $gray-300: lighten($gray, 12%); // sub heading 2 #969696
   $gray-400: lighten($gray, 8%); // sub heading #666666
 
